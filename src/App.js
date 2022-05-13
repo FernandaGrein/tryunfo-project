@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './components/Card';
 import CardSave from './components/CardSave';
 import Form from './components/Form';
+import Input from './components/Input';
 
 class App extends React.Component {
   state = {
@@ -17,6 +18,7 @@ class App extends React.Component {
     hasTrunfo: false,
     isSaveButtonDisabled: true,
     savedCards: [],
+    inputValue: '',
   };
 
   changeSaveButton = () => {
@@ -110,7 +112,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { savedCards } = this.state;
+    const { savedCards, inputValue } = this.state;
+    console.log(inputValue, savedCards);
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -120,7 +123,8 @@ class App extends React.Component {
           onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card { ...this.state } onInputChange={ this.handleChanges } />
-        { savedCards.map((card) => (
+        <Input inputValue={ inputValue } onInputChange={ this.handleChanges } />
+        { savedCards.filter((card) => card.cardName.includes(inputValue)).map((card) => (
           <CardSave
             key={ card.cardName }
             cardName={ card.cardName }
