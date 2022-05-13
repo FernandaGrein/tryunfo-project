@@ -12,10 +12,11 @@ class CardSave extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      deleteCard,
     } = this.props;
     return (
-      <>
-        <p>card Component</p>
+      <section>
+        <p>my card</p>
         <h4 data-testid="name-card">{cardName}</h4>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p>{cardDescription}</p>
@@ -24,7 +25,14 @@ class CardSave extends React.Component {
         <p>{cardAttr3}</p>
         <section>{cardRare}</section>
         {cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p>}
-      </>
+        <button
+          type="button"
+          data-testid="delete-button"
+          onClick={ () => deleteCard(cardName) }
+        >
+          Excluir
+        </button>
+      </section>
     );
   }
 }
@@ -37,5 +45,6 @@ CardSave.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  deleteCard: PropTypes.func.isRequired,
 };
 export default CardSave;

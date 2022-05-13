@@ -59,6 +59,16 @@ class App extends React.Component {
     this.setState({ [id]: value }, () => this.changeSaveButton());
   };
 
+  deleteCard = (name) => {
+    const { savedCards } = this.state;
+    const findCard = savedCards.find((item) => item.cardName === name);
+    if (findCard.cardTrunfo === 'on') {
+      this.setState({ hasTrunfo: false });
+    }
+    const targetCard = savedCards.filter((elemnt) => elemnt.cardName !== name);
+    this.setState({ savedCards: targetCard });
+  }
+
   onSaveButtonClick = () => {
     const {
       cardName,
@@ -120,6 +130,7 @@ class App extends React.Component {
             cardAttr3={ card.cardAttr3 }
             cardImage={ card.cardImage }
             cardTrunfo={ card.cardTrunfo }
+            deleteCard={ this.deleteCard }
           />))}
       </div>
     );
