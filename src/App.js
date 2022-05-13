@@ -7,15 +7,15 @@ class App extends React.Component {
     cardName: '',
     onInputChange: '',
     cardDescription: '',
-    cardAttr1: 0,
-    cardAttr2: 0,
-    cardAttr3: 0,
+    cardAttr1: '',
+    cardAttr2: '',
+    cardAttr3: '',
     cardImage: '',
     cardRare: '',
     cardTrunfo: false,
     hasTrunfo: false,
-    onSaveButtonClick: false,
     isSaveButtonDisabled: true,
+    savedCards: [],
   };
 
   changeSaveButton = () => {
@@ -58,11 +58,49 @@ class App extends React.Component {
     this.setState({ [id]: value }, () => this.changeSaveButton());
   };
 
+  onSaveButtonClick = () => {
+    const {
+      cardName,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardDescription,
+      cardImage,
+      savedCards } = this.state;
+
+    const newCard = {
+      nome: { cardName },
+      descrição: { cardDescription },
+      Atributos: `${cardAttr1}, ${cardAttr2}, ${cardAttr3}`,
+      image: { cardImage },
+    };
+    const newArray = savedCards;
+    newArray.push(newCard);
+    // this.setState({ savedCards: newArray });
+
+    this.setState({ cardName: '',
+      onInputChange: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      hasTrunfo: false,
+      isSaveButtonDisabled: true,
+      savedCards: newArray });
+  }
+
   render() {
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form { ...this.state } onInputChange={ this.handleChanges } />
+        <Form
+          { ...this.state }
+          onInputChange={ this.handleChanges }
+          onSaveButtonClick={ this.onSaveButtonClick }
+        />
         <Card { ...this.state } onInputChange={ this.handleChanges } />
       </div>
     );
