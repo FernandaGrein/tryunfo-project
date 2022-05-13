@@ -1,16 +1,16 @@
-import React from "react";
-import Card from "./components/Card";
-import Form from "./components/Form";
+import React from 'react';
+import Card from './components/Card';
+import Form from './components/Form';
 
 class App extends React.Component {
   state = {
-    cardName: "",
-    onInputChange: "",
-    cardDescription: "",
-    cardAttr1: "",
-    cardAttr2: "",
-    cardAttr3: "",
-    cardImage: "",
+    cardName: '',
+    onInputChange: '',
+    cardDescription: '',
+    cardAttr1: 0,
+    cardAttr2: 0,
+    cardAttr3: 0,
+    cardImage: '',
     cardRare: '',
     cardTrunfo: false,
     hasTrunfo: false,
@@ -31,15 +31,20 @@ class App extends React.Component {
     const secondNum = parseInt(cardAttr2, 10);
     const thirdNum = parseInt(cardAttr3, 10);
     const sumMax = 210;
-    const max = 90;
-    if (
+    const maxN = 90;
+
+    if (firstNum > maxN || firstNum < 0) {
+      this.setState({ isSaveButtonDisabled: true });
+    } else if (secondNum > maxN || secondNum < 0) {
+      this.setState({ isSaveButtonDisabled: true });
+    } else if (thirdNum > maxN || thirdNum < 0) {
+      this.setState({ isSaveButtonDisabled: true });
+    } else if (
       cardName.length > 0
       && cardDescription.length > 0
       && cardImage.length > 0
-      && (firstNum > 0 || firstNum > max)
-      && (secondNum > 0 || secondNum > max)
-      && (thirdNum > 0 || thirdNum > max)
-      && firstNum + secondNum + thirdNum <= sumMax) {
+      && firstNum + secondNum + thirdNum <= sumMax
+    ) {
       this.setState({ isSaveButtonDisabled: false });
     } else {
       this.setState({ isSaveButtonDisabled: true });
