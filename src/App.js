@@ -7,11 +7,11 @@ class App extends React.Component {
     cardName: '',
     onInputChange: '',
     cardDescription: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
+    cardAttr1: 0,
+    cardAttr2: 0,
+    cardAttr3: 0,
     cardImage: '',
-    cardRare: '',
+    cardRare: 'normal',
     cardTrunfo: false,
     hasTrunfo: false,
     isSaveButtonDisabled: true,
@@ -66,6 +66,7 @@ class App extends React.Component {
       cardAttr3,
       cardDescription,
       cardImage,
+      cardTrunfo,
       savedCards } = this.state;
 
     const newCard = {
@@ -73,6 +74,7 @@ class App extends React.Component {
       descrição: { cardDescription },
       Atributos: `${cardAttr1}, ${cardAttr2}, ${cardAttr3}`,
       image: { cardImage },
+      SuperTrunfo: { cardTrunfo },
     };
     const newArray = savedCards;
     newArray.push(newCard);
@@ -87,9 +89,12 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: false,
       isSaveButtonDisabled: true,
       savedCards: newArray });
+
+    if (cardTrunfo === 'on') {
+      this.setState({ hasTrunfo: true });
+    }
   }
 
   render() {
