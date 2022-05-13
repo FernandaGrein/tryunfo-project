@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
+import CardSave from './components/CardSave';
 import Form from './components/Form';
 
 class App extends React.Component {
@@ -7,9 +8,9 @@ class App extends React.Component {
     cardName: '',
     onInputChange: '',
     cardDescription: '',
-    cardAttr1: 0,
-    cardAttr2: 0,
-    cardAttr3: 0,
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
     cardImage: '',
     cardRare: 'normal',
     cardTrunfo: false,
@@ -70,22 +71,23 @@ class App extends React.Component {
       savedCards } = this.state;
 
     const newCard = {
-      nome: { cardName },
-      descrição: { cardDescription },
-      Atributos: `${cardAttr1}, ${cardAttr2}, ${cardAttr3}`,
-      image: { cardImage },
-      SuperTrunfo: { cardTrunfo },
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardTrunfo,
     };
     const newArray = savedCards;
     newArray.push(newCard);
-    // this.setState({ savedCards: newArray });
 
     this.setState({ cardName: '',
       onInputChange: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
@@ -98,6 +100,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { savedCards } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -107,6 +110,17 @@ class App extends React.Component {
           onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card { ...this.state } onInputChange={ this.handleChanges } />
+        { savedCards.map((card) => (
+          <CardSave
+            key={ card.cardName }
+            cardName={ card.cardName }
+            cardDescription={ card.cardDescription }
+            cardAttr1={ card.cardAttr1 }
+            cardAttr2={ card.cardAttr2 }
+            cardAttr3={ card.cardAttr3 }
+            cardImage={ card.cardImage }
+            cardTrunfo={ card.cardTrunfo }
+          />))}
       </div>
     );
   }
