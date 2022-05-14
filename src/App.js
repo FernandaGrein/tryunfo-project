@@ -19,6 +19,7 @@ class App extends React.Component {
     isSaveButtonDisabled: true,
     savedCards: [],
     inputValue: '',
+    selectRare: 'todas',
   };
 
   changeSaveButton = () => {
@@ -80,6 +81,7 @@ class App extends React.Component {
       cardDescription,
       cardImage,
       cardTrunfo,
+      cardRare,
       savedCards } = this.state;
 
     const newCard = {
@@ -90,9 +92,10 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardTrunfo,
+      cardRare,
     };
-    const newArray = savedCards;
-    newArray.push(newCard);
+
+    savedCards.push(newCard);
 
     this.setState({ cardName: '',
       onInputChange: '',
@@ -103,8 +106,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      isSaveButtonDisabled: true,
-      savedCards: newArray });
+      isSaveButtonDisabled: true });
 
     if (cardTrunfo === 'on') {
       this.setState({ hasTrunfo: true });
@@ -112,8 +114,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { savedCards, inputValue } = this.state;
-    console.log(inputValue, savedCards);
+    const { savedCards, inputValue, selectRare } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -123,19 +124,25 @@ class App extends React.Component {
           onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card { ...this.state } onInputChange={ this.handleChanges } />
-        <Input inputValue={ inputValue } onInputChange={ this.handleChanges } />
-        { savedCards.filter((card) => card.cardName.includes(inputValue)).map((card) => (
-          <CardSave
-            key={ card.cardName }
-            cardName={ card.cardName }
-            cardDescription={ card.cardDescription }
-            cardAttr1={ card.cardAttr1 }
-            cardAttr2={ card.cardAttr2 }
-            cardAttr3={ card.cardAttr3 }
-            cardImage={ card.cardImage }
-            cardTrunfo={ card.cardTrunfo }
-            deleteCard={ this.deleteCard }
-          />))}
+        <Input
+          inputValue={ inputValue }
+          onInputChange={ this.handleChanges }
+          selectRare={ selectRare }
+        />
+        { savedCards.filter((card) => (selectRare === 'todas'
+          ? savedCards : selectRare === card.cardRare))
+          .filter((card) => card.cardName.includes(inputValue)).map((card) => (
+            <CardSave
+              key={ card.cardName }
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardTrunfo={ card.cardTrunfo }
+              deleteCard={ this.deleteCard }
+            />))}
       </div>
     );
   }
