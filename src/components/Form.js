@@ -18,10 +18,10 @@ class Form extends React.Component {
       hasTrunfo,
     } = this.props;
     return (
-      <>
-        <p>Form Component</p>
-        <label htmlFor="nameInput">
-          Nome da Carta:
+      <div className="inputsCss">
+        <p>Crie as suas cartas!</p>
+        <label className="inputs" htmlFor="nameInput">
+          Nome do Bar:
           <input
             value={ cardName }
             id="cardName"
@@ -30,8 +30,8 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="descriptionInput">
-          Descrição da Carta:
+        <label className="inputs" htmlFor="descriptionInput">
+          Descrição do Bar:
           <input
             id="cardDescription"
             type="textarea"
@@ -40,8 +40,8 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="firstAtt">
-          Primeiro Atributo:
+        <label className="inputs" htmlFor="firstAtt">
+          Custo Benefício:
           <input
             value={ cardAttr1 }
             onChange={ onInputChange }
@@ -50,8 +50,8 @@ class Form extends React.Component {
             data-testid="attr1-input"
           />
         </label>
-        <label htmlFor="secondAtt">
-          Segundo Atributo:
+        <label className="inputs" htmlFor="secondAtt">
+          Localização:
           <input
             value={ cardAttr2 }
             onChange={ onInputChange }
@@ -60,8 +60,8 @@ class Form extends React.Component {
             data-testid="attr2-input"
           />
         </label>
-        <label htmlFor="thirdAtt">
-          Terceiro Atributo:
+        <label className="inputs" htmlFor="thirdAtt">
+          Ambiente:
           <input
             value={ cardAttr3 }
             onChange={ onInputChange }
@@ -70,8 +70,8 @@ class Form extends React.Component {
             data-testid="attr3-input"
           />
         </label>
-        <label htmlFor="imageInput">
-          Image URL:
+        <label className="inputs" htmlFor="imageInput">
+          Imagem do Bar:
           <input
             value={ cardImage }
             onChange={ onInputChange }
@@ -80,20 +80,20 @@ class Form extends React.Component {
             data-testid="image-input"
           />
         </label>
-        <label htmlFor="rareInput">
-          qual a raridade da carta:
+        <label className="inputs" htmlFor="rareInput">
+          qual à raridade desse Bar?
           <select
             id="cardRare"
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
           >
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">Muito raro</option>
+            <option value="normal">é um bar Comum</option>
+            <option value="raro">esse lugar é especial</option>
+            <option value="muito raro">Imperdível</option>
           </select>
         </label>
-        <label htmlFor="checkboxInput">
+        <label className="inputs" htmlFor="checkboxInput">
           Essa carta é um Super Trunfo?
           {hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : <input
             checked={ cardTrunfo }
@@ -113,7 +113,7 @@ class Form extends React.Component {
         >
           Salvar
         </button>
-      </>
+      </div>
     );
   }
 }

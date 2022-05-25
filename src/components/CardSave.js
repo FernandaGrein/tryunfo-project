@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import '../App.css';
 
 class CardSave extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class CardSave extends React.Component {
       deleteCard,
     } = this.props;
     return (
-      <section>
+      <section className="savedCard">
         <p>my card</p>
         <h4 data-testid="name-card">{cardName}</h4>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />

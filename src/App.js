@@ -3,6 +3,7 @@ import Card from './components/Card';
 import CardSave from './components/CardSave';
 import Form from './components/Form';
 import Input from './components/Input';
+import './App.css';
 
 class App extends React.Component {
   state = {
@@ -116,14 +117,18 @@ class App extends React.Component {
   render() {
     const { savedCards, inputValue, selectRare } = this.state;
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form
-          { ...this.state }
-          onInputChange={ this.handleChanges }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card { ...this.state } onInputChange={ this.handleChanges } />
+      <div className="firstPage">
+        <h1 className="title">Tryunfo</h1>
+        <div className="formAndCard">
+          <section className="formComponent">
+            <Form
+              { ...this.state }
+              onInputChange={ this.handleChanges }
+              onSaveButtonClick={ this.onSaveButtonClick }
+            />
+          </section>
+          <Card { ...this.state } onInputChange={ this.handleChanges } />
+        </div>
         <Input
           inputValue={ inputValue }
           onInputChange={ this.handleChanges }
