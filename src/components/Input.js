@@ -1,12 +1,13 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import '../App.css';
 
 class Input extends React.Component {
   render() {
     const { inputValue, onInputChange, selectRare } = this.props;
     return (
       <>
-        <label htmlFor="inputValue">
+        <label className="inputsLabels" htmlFor="inputValue">
           Escolha sua Carta
           <input
             type="text"
@@ -16,7 +17,7 @@ class Input extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="selectRare">
+        <label className="inputsLabels" htmlFor="selectRare">
           Escolha a raridade
           <select
             id="selectRare"
@@ -25,9 +26,9 @@ class Input extends React.Component {
             onChange={ onInputChange }
           >
             <option value="todas">todas</option>
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">Muito raro</option>
+            <option value="é um bar Comum">é um bar Comum</option>
+            <option value="esse lugar é especial">esse lugar é especial</option>
+            <option value="Imperdível">Imperdível</option>
           </select>
         </label>
       </>

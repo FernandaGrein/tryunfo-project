@@ -88,9 +88,9 @@ class Form extends React.Component {
             value={ cardRare }
             onChange={ onInputChange }
           >
-            <option value="normal">é um bar Comum</option>
-            <option value="raro">esse lugar é especial</option>
-            <option value="muito raro">Imperdível</option>
+            <option value="é um bar Comum">é um bar Comum</option>
+            <option value="esse lugar é especial">esse lugar é especial</option>
+            <option value="Imperdível">Imperdível</option>
           </select>
         </label>
         <label className="inputs" htmlFor="checkboxInput">

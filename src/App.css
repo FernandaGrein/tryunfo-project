@@ -19,17 +19,21 @@ body {
     margin: 5px;
     text-align: center;
     padding: 5px;
-    border: 1px solid black;
+    color: rgb(0, 183, 207);
 }
 
 .cardComponent {
     box-shadow: 3px 3px  3px 2px rgb(0, 183, 207);
     margin: 8px;
+    background-color: rgb(1, 52, 110);
+    font-size: medium;
+    text-align: center;
 }
 
 .formComponent {
     box-shadow: 3px 3px  3px 2px rgb(0, 183, 207);
     margin: 8px;
+    background-color: rgb(1, 52, 110);
 }
 
 
@@ -37,16 +41,41 @@ body {
     box-shadow: 3px 3px  3px 2px rgb(0, 183, 207);
     width: 40%;
     margin: 8px;
+    background-color: rgb(1, 52, 110);
+    text-align: center;
+    font-size: medium;
+}
+
+.inputsLabels {
+    margin: 3px;
+    padding: 3px;
+}
+
+.inputsLabels input {
+    margin: 5px;
+    padding: 3px;
+    font-size: medium;
+}
+
+.inputsLabels select {
+    margin: 5px;
+    padding: 3px;
+}
+
+.inputsLabels select option {
+    font-size: medium;
 }
 
 .inputsCss label input {
     margin: 5px;
     padding: 1px;
+    font-size: medium;
 }
 
 .inputsCss label select {
     margin: 2px;
     padding: 1px;
+    font-size: medium;
 }
 
 .inputsCss {
@@ -61,7 +90,14 @@ body {
 
 button {
     margin: 5px;
-    padding: 3px;
+    padding: 5px 15px;
+    text-shadow: rgb(0, 86, 92);
+    background-color: azure ;
+    font-size: medium;
+}
+
+button:hover {
+    background-color: rgb(190, 190, 190);
 }
 
 img {

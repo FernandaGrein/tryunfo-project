@@ -14,7 +14,7 @@ class App extends React.Component {
     cardAttr2: '0',
     cardAttr3: '0',
     cardImage: '',
-    cardRare: 'normal',
+    cardRare: 'é um bar Comum',
     cardTrunfo: false,
     hasTrunfo: false,
     isSaveButtonDisabled: true,
@@ -105,7 +105,7 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       cardImage: '',
-      cardRare: 'normal',
+      cardRare: 'é um bar Comum',
       cardTrunfo: false,
       isSaveButtonDisabled: true });
 
@@ -146,6 +146,7 @@ class App extends React.Component {
               cardAttr3={ card.cardAttr3 }
               cardImage={ card.cardImage }
               cardTrunfo={ card.cardTrunfo }
+              cardRare={ card.cardRare }
               deleteCard={ this.deleteCard }
             />))}
       </div>
